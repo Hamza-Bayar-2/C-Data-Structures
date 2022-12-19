@@ -18,26 +18,12 @@ node * CreateContact (node *r)
         printf("\n==> Please write the name with SMALL letters \nand use only english characters <==\n\n");
         if (r == NULL)
         {
-                r = (node *)malloc(sizeof(node));
-
-                printf("Name: ");
-                scanf(" %s", &r -> name);
-
-                printf("Surname: ");
-                scanf(" %s", &r -> surname);
-                printf("Phone number: ");
-
-                scanf(" %s", &r -> phone_num);
-
-                printf("Email: ");
-                scanf(" %s", &r -> email);
-
-                r -> next = NULL;
-                return r;
+                temp = (node *)malloc(sizeof(node));
+         }
+        else
+        {       
+                node * temp = (node *)malloc(sizeof(node));   
         }
-
-        node * temp = (node *)malloc(sizeof(node));        
-
         printf("Name: ");
         scanf(" %s", &temp -> name);
 
@@ -51,28 +37,6 @@ node * CreateContact (node *r)
         scanf(" %s", &temp -> email);
 
 
-        if (strncmp(r -> name, temp -> name, 4) > 0)
-        {
-                temp -> next = r;
-                return temp;
-        }
-        
-        node * iter = r;
-
-        while (iter -> next != NULL && strncmp(temp -> name, iter -> next -> name, 4) > 0)
-                iter = iter -> next;
-
-        if (iter -> next == NULL)
-        {
-                iter -> next = temp;
-                temp -> next = NULL;
-                return r;
-        }
-
-        temp -> next = iter -> next;
-        iter -> next = temp;
-
-        return r;
 }
 
 void ListContact (node * r)
